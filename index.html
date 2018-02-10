@@ -14,40 +14,36 @@
     <nav>
         <!--intra-page links-->
     </nav>
+
     <section id="main_map">
         <h2>Map Title</h2>
         <div id='map' style='width: 400px; height: 300px;'></div>
     </section>
+
     <section id="stats">
         <h2>Statistics</h2>
         <p>
         
         </p>
     </section>
+
+    <section id="charts">
+        <div class="radarChart"></div>
+    </section>
+
     <nav>
         <a href="#top">Top of Page</a>
     </nav>
 
 
+    <!-- Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
-    <script src="js/gen_stats.js"></script>
-    <script>
-        var crime_data_url = "http://www-static.bouldercolorado.gov/docs/opendata/CrimeLocations.csv?content=?";
-        
-        $.ajax({
-            url: crime_data_url,
-            dataType: "text/csv",
-            success: function (data) {
-                console.log(data);
-                
-            },
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 
-    </script>
+    <!-- Our own Scripts -->
+    <script src="js/radar_chart.js"></script>
+    <script src="js/data_viz.js"></script>
     <script src="js/map.js"></script>
 </body>
 </html>
