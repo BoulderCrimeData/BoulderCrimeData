@@ -12,7 +12,20 @@
 <body>
     <div id='map' style='width: 400px; height: 300px;'></div>
 
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
-    <script src="js/map"></script>
+    <script src="js/gen_stats.js"></script>
+    <script>
+        var crime_data_url = "https://www-static.bouldercolorado.gov/docs/opendata/CrimeLocations.GeoJSON"
+        $.getJSON(crime_data_url, function (data) {
+            // Call any functions that deal with the data
+            
+            gen_stats(data);
+        });
+    </script>
+    <script src="js/map.js"></script>
 </body>
 </html>
