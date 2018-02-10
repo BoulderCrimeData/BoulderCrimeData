@@ -27,16 +27,26 @@
     <nav>
         <a href="#top">Top of Page</a>
     </nav>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
     <script src="js/gen_stats.js"></script>
     <script>
-        var crime_data_url = "https://www-static.bouldercolorado.gov/docs/opendata/CrimeLocations.GeoJSON"
-        $.getJSON(crime_data_url, function (data) {
-            // Call any functions that deal with the data
-            
-            gen_stats(data);
-        });
+        var crime_data_url = "http://www-static.bouldercolorado.gov/docs/opendata/CrimeLocations.csv?content=?";
+        
+        $.ajax({
+            url: crime_data_url,
+            dataType: "text/csv",
+            success: function (data) {
+                console.log(data);
+                
+            },
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+
     </script>
     <script src="js/map.js"></script>
 </body>
