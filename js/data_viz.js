@@ -4,9 +4,13 @@
 
 d3.csv("data/CrimeLocations.csv", function(data) {
     create_radar_chart(data);
+    generate_summary_statistics(data);
 
 });
 
+/*
+* Function that generates a radar chart of 
+*/
 function create_radar_chart(data) {
         // Count how many crimes happened in each month
         var months = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0}
@@ -32,18 +36,19 @@ function create_radar_chart(data) {
             {axis: "December", value: months[11]}
         ]];
     
-        var color = d3.scale.ordinal()
-                    .range(["#EDC951","#CC333F","#00A0B0"]);
+        var color = d3.scale.ordinal().range(["#EDC951"]);
                     
         var margin = {top: 100, right: 100, bottom: 100, left: 100},
         width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
         height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+
+        // Get the month with the most amount of crime, to be used in the options
         var maxCrimeMonth = 0;
         time_data.forEach((entry) => {
             if (entry.value > maxCrimeMonth) {
                 maxCrimeMonth = entry.value;
             }
-        })
+        }); 
                     
         var radarChartOptions = {
             w: width,
@@ -57,3 +62,4 @@ function create_radar_chart(data) {
         //Call function to draw the Radar chart
         RadarChart(".radarChart", time_data, radarChartOptions);
 }
+
