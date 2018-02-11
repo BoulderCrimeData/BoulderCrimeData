@@ -54,11 +54,12 @@ $(document).ready(function () {
                       'interpolate',
                       ['linear'],
                       ['heatmap-density'],
-                      0, 'rgba(248, 233, 77, 0)',
-                      0.1, 'rgba(248, 233, 77, 0.2)',
-                      0.2, 'rgba(248, 233, 77, 0.4)',
-                      0.3, 'rgba(248, 233, 77, 0.6)',
-                      0.9, 'rgba(248, 233, 77, 1)'
+                      0, "rgba(0,0,0,0)",
+                      0.2, "rgb(0,0,255)",
+                      0.4, "rgb(50,50,200)",
+                      0.6, "rgb(100,100,150)",
+                      0.8, "rgb(200,200,100)",
+                      1, "rgb(255,255,0)"
                     ],
                     // increase radius as zoom increases
                     'heatmap-radius': {
