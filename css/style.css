@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Roboto+Condensed');
 
 :root {
-    --color-primary: #95B6d1;
+    --color-primary: #353535;
     --color-primary-contrast: white;
 
     --color-primary-dark: #426E92;
     --color-primary-dark-contrast: white;
 
-    --color-secondary-light: #FFFBF0;
+    --color-secondary-light: #F8E94D;
     --color-secondary-light-contrast: black;
 
     --color-three: #E3855D;
@@ -31,30 +31,82 @@ h6 {
 
 button {
     margin: 10px;
+    color: var(--color-secondary-light);
+}
+
+.btn-outline-success {
+    color: var(--color-secondary-light);
+    border-color: var(--color-secondary-light);
+}
+
+.navbar {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast) ;
+}
+
+.form-control{
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
 }
 
 #map {
-    left: -1%;
-    width: 102%;
+    width: 100%;
     height: 500px;
 }
 
 #stats {
     padding: 30px;
-    background-color: var(--color-primary-dark);
-    color: var(--color-primary-dark-contrast);
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
 }
 
 #charts {
     padding: 30px;
-    background-color: var(--color-secondary-light);
-    color: var(--color-secondary-light-contrast);
+    color: var(--color-primary-contrast);
+    /* IE10+ */ 
+    background-image: -ms-linear-gradient(top, #353535 0%, #B5B5B5 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top, #353535 0%, #B5B5B5 100%);
+
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #353535 0%, #B5B5B5 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #353535), color-stop(100, #B5B5B5));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, #353535 0%, #B5B5B5 100%);
+
+    /* W3C Markup */ 
+    background-image: linear-gradient(to bottom, #353535 0%, #B5B5B5 100%);
 }
 
 #about {
     padding: 30px;
-    background-color: var(--color-three);
-    color: var(--color-three-contrast);
+    /* IE10+ */ 
+    background-image: -ms-linear-gradient(top, #B5B5B5 0%, #FFFFFF 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top, #B5B5B5 0%, #FFFFFF 100%);
+
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #B5B5B5 0%, #FFFFFF 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #B5B5B5), color-stop(100, #FFFFFF));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, #B5B5B5 0%, #FFFFFF 100%);
+
+    /* W3C Markup */ 
+    background-image: linear-gradient(to bottom, #B5B5B5 0%, #FFFFFF 100%);
+    
+}
+
+#about p {
+    text-align: center;
+
 }
 
 .crime-counter {
