@@ -66,7 +66,7 @@ button {
 }
 
 #charts {
-    padding: 30px;
+    padding: 40px;
     color: var(--color-primary-contrast);
     /* IE10+ */ 
     background-image: -ms-linear-gradient(top, #353535 0%, #B5B5B5 100%);
