@@ -4,7 +4,7 @@
 
 d3.csv("data/CrimeLocations.csv", function(data) {
     create_radar_chart(data);
-    generate_summary_statistics(data);
+    summary_statistics(data);
 
 });
 
@@ -64,8 +64,40 @@ function create_radar_chart(data) {
 }
 
 /*
-* Function that generates summary 
+* Function that generates summary stats
 */
-function generate_summary_statistics(data) {
+function summary_statistics(data) {
+    var total_crimes, total_thefts, total_minor_crimes, total_violent_crimes = 0;
+    var crime_types = {}
+    data.forEach((crime) => {
+        var crime_type = crime.OFFENSE;
+        if(crime_types[crime_type] == null){
+            crime_types[crime_type] = 1;
+        } else {
+            crime_types[crime_type] += 1;
+        }
+    });
+
+    // Hoping these are right
+    var thefts = ["Auto Theft", "Burglary", "Motorcycle Theft", "Robbery", "Theft From Vehicle", "Theft Of Car Parts"];
+    var minor_offenses = ["Incident", "Indecency", "Indecent Exposure", "Recovery", "Trespassing", "Vandalism"];
+    var violent_crimes = ["Assault", "Homicide", "Sex Assault"];
+
+    // Sum the new types
+    Object.entries(crime_types).forEach((obj) => {
+        total_crimes += obj[1];
+        if (thefts.indexOf(obj[0]) > -1) {
+            total_thefts += obj[1];
+        } else if (minor_offenses.indexOf(obj[0]) > -1) {
+            total_minor_crimes += obj[1];
+        } else {
+            total_violent_crimes += obj[1];
+        }
+    });
+    
+    
+}
+
+function histogram(data) {
 
 }
