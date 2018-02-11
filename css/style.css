@@ -39,14 +39,19 @@ button {
     border-color: var(--color-secondary-light);
 }
 
+.btn-outline-success:hover {
+    background-color: var(--color-secondary-light);
+    border-color: var(--color-secondary-light);
+}
+
 .navbar {
     background-color: var(--color-primary);
     color: var(--color-primary-contrast) ;
 }
 
 .form-control{
-    background-color: var(--color-primary);
-    color: var(--color-primary-contrast);
+    background-color: var(--color-primary) !important;
+    color: var(--color-primary-contrast) !important;
 }
 
 #map {
