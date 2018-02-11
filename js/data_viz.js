@@ -63,3 +63,9 @@ function create_radar_chart(data) {
         RadarChart(".radarChart", time_data, radarChartOptions);
 }
 
+/*
+* Function that generates summary 
+*/
+function generate_summary_statistics(data) {
+
+}
