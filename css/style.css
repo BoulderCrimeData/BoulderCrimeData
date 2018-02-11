@@ -13,3 +13,9 @@ p {
     
     font-family: "Merriweather", serif;
 }
+
+#map {
+    left: -1%;
+    width: 102%;
+    height: 500px;
+}
