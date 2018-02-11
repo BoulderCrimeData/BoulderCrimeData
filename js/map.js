@@ -14,7 +14,7 @@ $(document).ready(function () {
             var crimes = []
             for (var i = 0; i < data.features.length; i++){
                 var crime = data.features[i]
-                crimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": "crime", "icon": "point"}})
+                crimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}})
             }
 
             console.log(crimes);
@@ -78,6 +78,56 @@ $(document).ready(function () {
                     },
                   }
             }, 'waterway-label');
+
+            map.addLayer({
+              id: 'trees-point',
+              type: 'circle',
+              source: 'earthquakes',
+              minzoom: 15,
+              paint: {
+                // increase the radius of the circle as the zoom level and dbh value increases
+                'circle-radius': {
+                  property: 'dbh',
+                  type: 'exponential',
+                  stops: [
+                    [{ zoom: 15, value: 1 }, 5],
+                    [{ zoom: 15, value: 62 }, 10],
+                    [{ zoom: 22, value: 1 }, 20],
+                    [{ zoom: 22, value: 62 }, 50],
+                  ]
+                },
+                'circle-color': {
+                  property: 'dbh',
+                  type: 'exponential',
+                  stops: [
+                    [0, 'rgba(236,222,239,0)'],
+                    [10, 'rgb(236,222,239)'],
+                    [20, 'rgb(208,209,230)'],
+                    [30, 'rgb(166,189,219)'],
+                    [40, 'rgb(103,169,207)'],
+                    [50, 'rgb(28,144,153)'],
+                    [60, 'rgb(1,108,89)']
+                  ]
+                },
+                'circle-stroke-color': 'white',
+                'circle-stroke-width': 1,
+                'circle-opacity': {
+                  stops: [
+                    [16, 0],
+                    [18, 1]
+                  ]
+                }
+              }
+            }, 'waterway-label');
+            
+            map.on('click', 'trees-point', function(e) {
+              new mapboxgl.Popup()
+                .setLngLat(e.features[0].geometry.coordinates)
+                .setHTML("Type of Crime:" + e.features[0].properties.title + "<br>Date of Crime:" + e.features[0].properties.date)
+                .addTo(map);
+            });
+
+
 
             // map.addLayer({
             //     "id": "points",
