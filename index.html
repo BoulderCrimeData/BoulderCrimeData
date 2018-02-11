@@ -111,23 +111,23 @@
         }
 
         $('#date-form').on('submit', function () {
-            var arrayOfDates = document.getElementById("start_date").value.split("-");
-            var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
-            var arrayOfDates2 = document.getElementById("end_date").value.split("-");
-            var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
-            //var start_date = new Date(document.getElementById("start_date").value);
-            //var end_date = new Date(document.getElementById("end_date").value);
+            //var arrayOfDates = document.getElementById("start_date").value.split("-");
+            //var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+            //var arrayOfDates2 = document.getElementById("end_date").value.split("-");
+            //var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
+            var start_date = new Date(document.getElementById("start_date").value);
+            var end_date = new Date(document.getElementById("end_date").value);
             refresh(start_date, end_date);
             return false;
         });
 
         function refresh_button() {
-            var arrayOfDates = document.getElementById("start_date").value.split("-");
-            var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
-            var arrayOfDates2 = document.getElementById("end_date").value.split("-");
-            var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
-            //var start_date = new Date(document.getElementById("start_date").value);
-            //var end_date = new Date(document.getElementById("end_date").value);
+            //var arrayOfDates = document.getElementById("start_date").value.split("-");
+            //var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+            //var arrayOfDates2 = document.getElementById("end_date").value.split("-");
+            //var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
+            var start_date = new Date(document.getElementById("start_date").value);
+            var end_date = new Date(document.getElementById("end_date").value);
             refresh(start_date, end_date);
             return false;
         }
