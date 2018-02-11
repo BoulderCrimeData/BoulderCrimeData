@@ -2,11 +2,21 @@
 * Gen basic crime stats over the given period
 */
 
-d3.csv("data/CrimeLocations.csv", function(data) {
-    create_radar_chart(data);
-    summary_statistics(data);
+function refresh_charts(start_date, end_date){
+    d3.csv("data/CrimeLocations.csv", function(data) {
+        var filtered = data.filter(function (d) {
+            var temp = new Date(d.REPORTDATE)
+            if(temp > start_date && temp < end_date) {
+                return d;
+            }
+            
+        });
+        create_radar_chart(filtered);
+        summary_statistics(filtered);
+    });
+}
 
-});
+
 
 /*
 * Function that generates a radar chart of 
@@ -36,7 +46,7 @@ function create_radar_chart(data) {
             {axis: "December", value: months[11]}
         ]];
     
-        var color = d3.scale.ordinal().range(["#EDC951"]);
+        var color = d3.scale.ordinal().range(["#F8E94D"]);
                     
         var margin = {top: 100, right: 100, bottom: 100, left: 100},
         width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,

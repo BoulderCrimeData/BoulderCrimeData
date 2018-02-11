@@ -31,11 +31,11 @@
         <ul class="navbar-nav mr-auto">
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control" type="date" value="2008-1-1">
-        <h3 style="margin:7px"> - </h3>
-        <input class="form-control" type="date" value="2008-1-1">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-refresh"></i></button>
+        <form class="form-inline my-2 my-lg-0" id="date-form">
+            <input class="form-control" id="start_date" type="date" value="2008-1-1">
+            <h3 style="margin:7px"> - </h3>
+            <input class="form-control" id="end_date" type="date" value="2008-1-1">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-refresh"></i></button>
         </form>
     </div>
     </nav>
@@ -78,7 +78,9 @@
         <h2>About the Project</h2>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6"><p>Paragraph discussing goal/purpose of site. Mention where data is from.</p></div>
+            <div class="col-md-6">
+                <p>The Boulder Crime Explorer is an interactive tool for visualizing crime in the Boulder area. It was created as part of <a href="http://t9hacks.org/" target="_blank">T9 Hacks</a>, a hackathon on the CU Boulder campus. The team decided to create the tool as a combination of the Creative and Humanitarian Technology challenges. Our goal is to help citizens and public officials better understand crime in our community. The dataset we used is provided as part of the <a href="https://bouldercolorado.gov/open-data" target="_blank">Boulder Open Data Catalog</a>. All of our code is open source and licensed under the MIT license on <a href="https://github.com/BoulderCrimeData/BoulderCrimeData" target="_blank">Github</a>. </p>
+            </div>
             <div class="col-md-3"></div>
         </div>
        
@@ -96,5 +98,31 @@
     <script src="js/radar_chart.js"></script>
     <script src="js/data_viz.js"></script>
     <script src="js/map.js"></script>
+    <script>
+        function refresh(start_date, end_date) {
+            refresh_map(start_date, end_date);
+            refresh_charts(start_date,end_date);  
+        }
+
+        $('#date-form').on('submit', function () {
+            var start_date = new Date(document.getElementById("start_date").value);
+            var end_date = new Date(document.getElementById("end_date").value);
+            refresh(start_date, end_date);
+            return false;
+        });
+
+        function refresh_button() {
+            var start_date = new Date(document.getElementById("start_date").value);
+            var end_date = new Date(document.getElementById("end_date").value);
+            refresh(start_date, end_date);
+            return false;
+        }
+        // Create the stats when the document is ready
+        $(document).ready(() => {
+            var today = new Date();
+            var start = new Date("1-1-2000");
+            refresh(start,today)
+        })
+    </script>
 </body>
 </html>
