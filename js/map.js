@@ -9,22 +9,57 @@ $(document).ready(function () {
 	    attributionControl: false
 	});
 
-	map.addSource({
-	 type: 'geojson',
-	  data: 'data/CrimeLocations.json'
-	});
 
+	//console.log("test");
 
-	/*
 	var crimeData;
 	$.support.cors = true;
 	$.getJSON('data/CrimeLocations.json', function (data) {
 		crimeData = data;
-		for (crime = 0; crime < crimeData.features.length; crime++){
-			var crimePoint = crimeData.features[crime].geometry.coordinates;
-		}
+		
+			
+
+		
+
+
+		map.on('load', function() {
+		    map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function(error, image) {
+		        if (error) throw error;
+		        var arr = [];
+		        
+		        map.addImage("cat", image);
+
+		        for (crime = 0; crime < crimeData.features.length; crime++){
+		        	var crimePoint = crimeData.features[crime].geometry.coordinates;
+		        map.addLayer({
+
+		            "id": "cat",
+		            "type": "symbol",
+		            "source": {
+		                "type": "geojson",
+		                "data": {
+		                    "type": "FeatureCollection",
+		                    "features": [{
+		                        "type": "Feature",
+		                        "geometry": {
+		                            "type": "Point",
+		                            "coordinates": [crimePoint[0], crimePoint[1]]
+		                        }
+		                    }]
+		                }
+		            },
+		            "layout": {
+		                "icon-image": "cat",
+		                "icon-size": 0.25
+		            }
+		        });
+		    }
+		    });
+			});
+		
 	});
-	var myLayer = L.mapbox.featureLayer().setGeoJSON(crimeData).addTo(map);*/
+
+	//var myLayer = L.mapbox.featureLayer().setGeoJSON(crimeData).addTo(map);
 
 	/*
 	map.on('load', function () {
@@ -44,3 +79,4 @@ $(document).ready(function () {
 
 
 });
+
