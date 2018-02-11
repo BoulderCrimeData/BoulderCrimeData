@@ -67,7 +67,10 @@ function create_radar_chart(data) {
 * Function that generates summary stats
 */
 function summary_statistics(data) {
-    var total_crimes, total_thefts, total_minor_crimes, total_violent_crimes = 0;
+    var total_crimes = 0;
+    var total_thefts = 0;
+    var total_minor_crimes = 0;
+    var total_violent_crimes = 0;
     var crime_types = {}
     data.forEach((crime) => {
         var crime_type = crime.OFFENSE;
@@ -86,7 +89,6 @@ function summary_statistics(data) {
     // Sum the new types
     Object.entries(crime_types).forEach((obj) => {
         total_crimes += obj[1];
-        console.log();
         
         if (thefts.indexOf(obj[0]) > -1) {
             total_thefts += obj[1];
@@ -99,14 +101,35 @@ function summary_statistics(data) {
     
       console.log(total_crimes);
       
-    
+    var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
     $('#total-crimes').animateNumber({
         number: total_crimes,
         color: 'green',
-        'font-size': '30px',
+        'font-size': '55px',
         easing: 'easeInQuad',
-      }, 15000);
-    
+        numberStep: comma_separator_number_step
+      }, 5000);
+    $('#thefts').animateNumber({
+        number: total_thefts,
+        color: 'green',
+        'font-size': '55px',
+        easing: 'easeInQuad',
+        numberStep: comma_separator_number_step
+    }, 5000);
+    $('#minor-offenses').animateNumber({
+        number: total_minor_crimes,
+        color: 'green',
+        'font-size': '55px',
+        easing: 'easeInQuad',
+        numberStep: comma_separator_number_step
+    }, 5000);
+    $('#violent-crimes').animateNumber({
+        number: total_violent_crimes,
+        color: 'green',
+        'font-size': '55px',
+        easing: 'easeInQuad',
+        numberStep: comma_separator_number_step
+    }, 5000);
 
 }
 
