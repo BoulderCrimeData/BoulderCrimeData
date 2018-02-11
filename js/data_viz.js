@@ -109,7 +109,6 @@ function summary_statistics(data) {
         }
     });
     
-      console.log(total_crimes);
       
     var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
     $('#total-crimes').animateNumber({
