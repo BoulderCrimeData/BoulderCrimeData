@@ -22,7 +22,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
-    <h1 class="navbar-brand" style="font-size: 35px" href="#">Boulder Crime Explorer</h1>
+    <h1 class="navbar-brand" style="font-size: 25px" href="#">Boulder Crime Explorer</h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -66,11 +66,16 @@
         </div>
     </section>
 
-    <section id="charts">
-        <h1>When Crime Occurs</h1>
+    <section id="charts" class="container-fluid">
         <div class="row">
-            <div class="radarChart col-md-6"></div>
-            <div class="histogram col-md-6"></div>
+            <div class="col-md-6">
+                <h1>When Crime Occur</h1>
+                <div class="radarChart" style="margin:20px"></div>
+            </div>
+            <div class="col-md-6">
+                <h1>Types of Crimes</h1>
+                <div class="pieChart"></div>
+            </div>
         </div>
     </section>
     
