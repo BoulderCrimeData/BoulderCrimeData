@@ -342,21 +342,27 @@ function refresh_map(start_date, end_date) {
           map.on('click', 'theftidcircles', function(e) {
             new mapboxgl.Popup()
               .setLngLat(e.features[0].geometry.coordinates)
-              .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date)
+              .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date 
+              + "<form action='https://google.com/search' method='get' target='_blank'><input type='hidden' name='q' value='Boulder"
+              +' '+e.features[0].properties.date+' '+e.features[0].properties.title+"'/><input type='submit' value='search'/></form>")
               .addTo(map);
           });
 
           map.on('click', 'minoridcircles', function(e) {
             new mapboxgl.Popup()
               .setLngLat(e.features[0].geometry.coordinates)
-              .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date)
+              .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date
+              + "<form action='https://google.com/search' method='get' target='_blank'><input type='hidden' name='q' value='Boulder"
+              +' '+e.features[0].properties.date+' '+e.features[0].properties.title+"'/><input type='submit' value='search'/></form>")
               .addTo(map);
           });
 
           map.on('click', 'violentidcircles', function(e) {
             new mapboxgl.Popup()
               .setLngLat(e.features[0].geometry.coordinates)
-              .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date)
+              .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date
+              + "<form action='https://google.com/search' method='get' target='_blank'><input type='hidden' name='q' value='Boulder"
+              +' '+e.features[0].properties.date+' '+e.features[0].properties.title+"'/><input type='submit' value='search'/></form>")
               .addTo(map);
           });
         });
