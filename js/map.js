@@ -19,19 +19,20 @@ function refresh_map(start_date, end_date) {
           var minorcrimes = [];
           var violentcrimes = [];
           for (var i = 0; i < data.features.length; i++){
-              var crime = data.features[i]
-              var temp = new Date(crime.properties.REPORTDATE)
-              if(temp > start_date && temp < end_date) {
+              var crime = data.features[i];
+              var arrayOfDates = crime.properties.REPORTDATE.toString().split("/");
+              var temp = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+              if(temp >= start_date && temp <= end_date) {
                 if (thefts.indexOf(crime.properties.OFFENSE) != -1) { // is a theft
-                  theftcrimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}})
+                  theftcrimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}});
                 }
                 else if (minor_offenses.indexOf(crime.properties.OFFENSE) != -1) { // is a minor offense
-                  minorcrimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}})
+                  minorcrimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}});
                 }
                 else if (violent_crimes.indexOf(crime.properties.OFFENSE) != -1) { // is a violent crime
-                  violentcrimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}})
+                  violentcrimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}});
                 }
-                crimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}})
+                crimes.push({"type": "Feature", "geometry": crime.geometry, "properties": { "title": crime.properties.OFFENSE, "date": crime.properties.REPORTDATE, "icon": "point"}});
               }
           }
 
@@ -213,15 +214,14 @@ function refresh_map(start_date, end_date) {
                     ]
                   },
                 }
-            });
-
+            }, 'waterway-label');
           
             map.addLayer({
-            id: 'theftidcircles',
-            type: 'circle',
-            source: 'theft',
-            minzoom: 15,
-            paint: {
+              id: 'theftidcircles',
+              type: 'circle',
+              source: 'theft',
+              minzoom: 15,
+              paint: {
               // increase the radius of the circle as the zoom level and dbh value increases
               'circle-radius': {
                 property: 'dbh',
@@ -230,14 +230,14 @@ function refresh_map(start_date, end_date) {
                   [{ zoom: 15, value: 1 }, 5],
                   [{ zoom: 15, value: 62 }, 10],
                   [{ zoom: 22, value: 1 }, 20],
-                  [{ zoom: 22, value: 62 }, 50],
+                  [{ zoom: 22, value: 62 }, 50]
                 ]
               },
               'circle-color': {
                 property: 'dbh',
                 type: 'exponential',
                 stops: [
-                  [0, 'rgb(0,0,255,1)'],
+                  [0, 'rgba(0,0,255,0)'],
                   [10, 'rgb(0,0,255)'],
                   [20, 'rgb(0,0,255)'],
                   [30, 'rgb(0,0,255)'],
@@ -271,7 +271,7 @@ function refresh_map(start_date, end_date) {
                   [{ zoom: 15, value: 1 }, 5],
                   [{ zoom: 15, value: 62 }, 10],
                   [{ zoom: 22, value: 1 }, 20],
-                  [{ zoom: 22, value: 62 }, 50],
+                  [{ zoom: 22, value: 62 }, 50]
                 ]
               },
               'circle-color': {
@@ -312,7 +312,7 @@ function refresh_map(start_date, end_date) {
                   [{ zoom: 15, value: 1 }, 5],
                   [{ zoom: 15, value: 62 }, 10],
                   [{ zoom: 22, value: 1 }, 20],
-                  [{ zoom: 22, value: 62 }, 50],
+                  [{ zoom: 22, value: 62 }, 50]
                 ]
               },
               'circle-color': {
@@ -359,64 +359,8 @@ function refresh_map(start_date, end_date) {
               .setHTML("Type of Crime: " + e.features[0].properties.title + "<br>Date of Crime: " + e.features[0].properties.date)
               .addTo(map);
           });
-
-          map.addLayer({
-            "id": "earthquakes-heat",
-            "type": "heatmap",
-            "source": "earthquakes",
-            "maxzoom": 24,
-            "paint": {
-                // increase weight as diameter breast height increases
-                'heatmap-weight': {
-                  property: 'dbh',
-                  type: 'exponential',
-                  stops: [
-                    [1, 0],
-                    [62, 1]
-                  ]
-                },
-                // increase intensity as zoom level increases
-                'heatmap-intensity': {
-                  stops: [
-                    [11, 1],
-                    [15, 1]
-                  ]
-                },
-                // assign color values be applied to points depending on their density
-                'heatmap-color': [
-                  'interpolate',
-                  ['linear'],
-                  ['heatmap-density'],
-                  0, "rgba(0,0,0,0)",
-                  0.2, "rgb(0,0,255)",
-                  0.4, "rgb(50,50,200)",
-                  0.6, "rgb(100,100,150)",
-                  0.8, "rgb(200,200,100)",
-                  1, "rgb(255,255,0)"
-                ],
-                // increase radius as zoom increases
-                'heatmap-radius': {
-                  stops: [
-                    [11, 15],
-                    [15, 20]
-                  ]
-                },
-                // decrease opacity to transition into the circle layer
-                'heatmap-opacity': {
-                  default: 1,
-                  stops: [
-                    [14, 1],
-                    [15, 0]
-                  ]
-                },
-              }
-        }, 'waterway-label');
-            
         });
     });
-	
-
-
 }
 
 

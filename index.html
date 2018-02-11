@@ -32,9 +32,9 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0" id="date-form">
-            <input class="form-control" id="start_date" type="date" value="2008-1-1">
+            <input class="form-control" id="start_date" type="date" value="">
             <h3 style="margin:7px"> - </h3>
-            <input class="form-control" id="end_date" type="date" value="2008-1-1">
+            <input class="form-control" id="end_date" type="date" value="">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-refresh"></i></button>
         </form>
     </div>
@@ -100,27 +100,36 @@
     <script src="js/map.js"></script>
     <script>
         function refresh(start_date, end_date) {
+            //console.log(start_date, end_date);
             refresh_map(start_date, end_date);
             refresh_charts(start_date,end_date);  
         }
 
         $('#date-form').on('submit', function () {
-            var start_date = new Date(document.getElementById("start_date").value);
-            var end_date = new Date(document.getElementById("end_date").value);
+            var arrayOfDates = document.getElementById("start_date").value.split("-");
+            var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+            var arrayOfDates2 = document.getElementById("end_date").value.split("-");
+            var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
+            //var start_date = new Date(document.getElementById("start_date").value);
+            //var end_date = new Date(document.getElementById("end_date").value);
             refresh(start_date, end_date);
             return false;
         });
 
         function refresh_button() {
-            var start_date = new Date(document.getElementById("start_date").value);
-            var end_date = new Date(document.getElementById("end_date").value);
+            var arrayOfDates = document.getElementById("start_date").value.split("-");
+            var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+            var arrayOfDates2 = document.getElementById("end_date").value.split("-");
+            var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
+            //var start_date = new Date(document.getElementById("start_date").value);
+            //var end_date = new Date(document.getElementById("end_date").value);
             refresh(start_date, end_date);
             return false;
         }
         // Create the stats when the document is ready
         $(document).ready(() => {
             var today = new Date();
-            var start = new Date("1-1-2000");
+            var start = new Date(2000, 1, 1);
             refresh(start,today)
         })
     </script>
