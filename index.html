@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="css/greymap.png">
     <!-- Load jQuery -->
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
@@ -19,7 +20,7 @@
     <!-- Load Stamen's library -->
     <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
 </head>
-<body>
+<body onload="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
 
     <nav class="navbar navbar-expand-lg navbar-dark">
     <h1 class="navbar-brand" style="font-size: 25px" href="#">Boulder Crime Explorer</h1>
@@ -122,23 +123,23 @@
         }
 
         $('#date-form').on('submit', function () {
-            var arrayOfDates = document.getElementById("start_date").value.split("-");
-            var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
-            var arrayOfDates2 = document.getElementById("end_date").value.split("-");
-            var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
-            //var start_date = new Date(document.getElementById("start_date").value);
-            //var end_date = new Date(document.getElementById("end_date").value);
+            //var arrayOfDates = document.getElementById("start_date").value.split("-");
+            //var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+            //var arrayOfDates2 = document.getElementById("end_date").value.split("-");
+            //var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
+            var start_date = new Date(document.getElementById("start_date").value);
+            var end_date = new Date(document.getElementById("end_date").value);
             refresh(start_date, end_date);
             return false;
         });
 
         function refresh_button() {
-            var arrayOfDates = document.getElementById("start_date").value.split("-");
-            var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
-            var arrayOfDates2 = document.getElementById("end_date").value.split("-");
-            var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
-            //var start_date = new Date(document.getElementById("start_date").value);
-            //var end_date = new Date(document.getElementById("end_date").value);
+            //var arrayOfDates = document.getElementById("start_date").value.split("-");
+            //var start_date = new Date(parseInt(arrayOfDates[0]), parseInt(arrayOfDates[1]), parseInt(arrayOfDates[2]));
+            //var arrayOfDates2 = document.getElementById("end_date").value.split("-");
+            //var end_date = new Date(parseInt(arrayOfDates2[0]), parseInt(arrayOfDates2[1]), parseInt(arrayOfDates2[2]));
+            var start_date = new Date(document.getElementById("start_date").value);
+            var end_date = new Date(document.getElementById("end_date").value);
             refresh(start_date, end_date);
             return false;
         }

@@ -5,8 +5,8 @@
 function refresh_charts(start_date, end_date){
     d3.csv("data/CrimeLocations.csv", function(data) {
         var filtered = data.filter(function (d) {
-            var temp = new Date(d.REPORTDATE)
-            if(temp > start_date && temp < end_date) {
+            var temp = new Date(d.REPORTDATE);
+            if(temp >= start_date && temp <= end_date) {
                 return d;
             }
             
