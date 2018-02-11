@@ -86,6 +86,8 @@ function summary_statistics(data) {
     // Sum the new types
     Object.entries(crime_types).forEach((obj) => {
         total_crimes += obj[1];
+        console.log();
+        
         if (thefts.indexOf(obj[0]) > -1) {
             total_thefts += obj[1];
         } else if (minor_offenses.indexOf(obj[0]) > -1) {
@@ -94,13 +96,6 @@ function summary_statistics(data) {
             total_violent_crimes += obj[1];
         }
     });
-
-    var animation_settings = {
-        number: 100,
-        color: 'green',
-        'font-size': '30px',
-        easing: 'easeInQuad',
-      }
     
       console.log(total_crimes);
       
