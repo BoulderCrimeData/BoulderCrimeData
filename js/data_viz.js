@@ -94,8 +94,25 @@ function summary_statistics(data) {
             total_violent_crimes += obj[1];
         }
     });
+
+    var animation_settings = {
+        number: 100,
+        color: 'green',
+        'font-size': '30px',
+        easing: 'easeInQuad',
+      }
     
+      console.log(total_crimes);
+      
     
+    $('#total-crimes').animateNumber({
+        number: total_crimes,
+        color: 'green',
+        'font-size': '30px',
+        easing: 'easeInQuad',
+      }, 15000);
+    
+
 }
 
 function histogram(data) {
