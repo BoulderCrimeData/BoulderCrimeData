@@ -6,28 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Boulder Crime Explorer</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1 id="top">Boulder Crime Explorer</h1>
-    <p>Analyzing Boudler Crime Data</p>
-    <nav>
-        <ul>
-            <li><a href="#main_map">Crime Density Map</a></li>
-            <li><a href="#stats">Statistics</a></li>
-            <li><a href="#charts">Visuals</a></li>
-            <li></li>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <h1 class="navbar-brand" style="font-size: 35px" href="#">Boulder Crime Explorer</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
         </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+        <input class="form-control" type="date" value="2008-1-1">
+        <h3 style="margin:7px"> - </h3>
+        <input class="form-control" type="date" value="2008-1-1">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-refresh"></i></button>
+        </form>
+    </div>
     </nav>
 
     <section id="main_map">
-        <h2>Crime Density Map</h2>
         <div id='map'></div>
     </section>
 
     <section id="stats" class="container-fluid">
-        <h2>Statistics</h2>
+        <h1>Statistics</h1>
         <div class="row">
             <div class="col-md-3">
                 <h2 class="crime-counter" id="total-crimes">0</h2>
@@ -49,26 +58,29 @@
     </section>
 
     <section id="charts">
-        <h2>Charts</h2>
-        <div class="radarChart"></div>
-        <div class="histogram"></div>
+        <h1>When Crime Occurs</h1>
+        <div class="row">
+            <div class="radarChart col-md-6"></div>
+            <div class="histogram col-md-6"></div>
+        </div>
     </section>
     
     <section id="about">
         <h2>About the Project</h2>
-        <p>Paragraph discussing goal/purpose of site. Mention where data is from.</p>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6"><p>Paragraph discussing goal/purpose of site. Mention where data is from.</p></div>
+            <div class="col-md-3"></div>
+        </div>
+       
     </section>
-
-    <nav>
-        <a href="#top">Top of Page</a>
-    </nav>
-
 
     <!-- Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
 
     <!-- Our own Scripts -->

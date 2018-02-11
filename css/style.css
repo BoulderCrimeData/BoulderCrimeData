@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Roboto+Condensed');
 
+:root {
+    --color-primary: #95B6d1;
+    --color-primary-contrast: white;
+
+    --color-primary-dark: #426E92;
+    --color-primary-dark-contrast: white;
+
+    --color-secondary-light: #FFFBF0;
+    --color-secondary-light-contrast: black;
+
+    --color-three: #E3855D;
+    --color-three-contrast: white;
+}
+
 h1,
 h2,
 h3,
@@ -15,12 +29,39 @@ h6 {
     font-family: "Merriweather", serif;
 }
 
+button {
+    margin: 10px;
+}
+
 #map {
     left: -1%;
     width: 102%;
     height: 500px;
 }
 
+#stats {
+    padding: 30px;
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary-dark-contrast);
+}
+
+#charts {
+    padding: 30px;
+    background-color: var(--color-secondary-light);
+    color: var(--color-secondary-light-contrast);
+}
+
+#about {
+    padding: 30px;
+    background-color: var(--color-three);
+    color: var(--color-three-contrast);
+}
+
 .crime-counter {
     font-size: 30px;
+}
+
+.radar-chart {
+    display: block;
+    margin: auto;
 }
